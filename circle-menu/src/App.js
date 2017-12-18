@@ -137,7 +137,7 @@ export default class App extends Component {
 								.split(/,\s*/)
 								.map((value, index, list) => `${value}%${index % 2 ? index === list.length - 1 ? '' : ',' : ' '}`)
 								.join('')
-						})`
+							})`
 					},
 					ease: Linear.easeNone
 				},
