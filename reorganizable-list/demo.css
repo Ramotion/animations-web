@@ -1,0 +1,28 @@
+#reorganizable-root .expanded-content {
+  height:100%;
+  width:100%;
+}
+
+#reorganizable-root .background {
+  position: absolute;
+  top:0px;
+  left:0px;
+  width:160px;
+  height:160px;
+  background-size:cover;
+}
+
+#reorganizable-root .title {
+  font-size:18px;
+  padding-left:200px;
+  padding-right:60px;
+  line-height: 50px;
+  font-weight: bold;
+}
+
+#reorganizable-root .description {
+  font-size: 16px;
+  padding-left:200px;
+  padding-right:60px;
+  line-height: 1.5;
+}

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+  <title>Reorganizable List</title>
+
+  <meta charset='utf-8'>
+
+  <meta name='viewport' content='width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0, shrink-to-fit=no'>
+  <meta name='mobile-web-app-capable' content='yes'>
+  <meta name='apple-mobile-web-app-capable' content='yes' />
+  <meta name='apple-mobile-web-app-status-bar-style' content='black-translucent' />
+
+  <style>
+
+    html,body {
+      width:100%;
+      height:100%;
+      -webkit-overflow-scrolling: touch;
+      margin:0px;
+      padding:0px;
+      background-color:#222;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      position:relative;
+    }
+
+    #reorganizable-root {
+      position:relative;
+      margin:auto;
+      max-width:700px;
+      background-color: #322647;
+    }
+
+    #reorganizable-root * {
+      box-sizing: border-box;
+    }
+
+  </style>
+
+  <link rel="stylesheet" type="text/css" href="reorganizable-list/reorganizable-list.css" />
+  <link rel="stylesheet" type="text/css" href="demo.css" />
+
+  <!-- Greensock TweenLite -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.3/TweenLite.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.3/plugins/CSSPlugin.min.js"></script>
+
+  <!-- Reorganizable List widget -->
+  <script src="reorganizable-list/reorganizable-list.js"></script>
+
+  <!-- demonstration -->
+  <script src="main.js"></script>
+</head>
+
+<body onload="main(document.getElementById('reorganizable-root'))">
+  <div id='reorganizable-root'></div>
+</body>
+</html>

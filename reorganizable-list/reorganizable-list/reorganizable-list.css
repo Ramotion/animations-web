@@ -1,0 +1,52 @@
+#reorganizable-root .item-node-container {
+  position:absolute;
+  background: rgba(255,255,255,0.2);
+  border-radius:5px;
+  font-family: sans-serif;
+  color:#444;
+  transform: translateZ(0);
+}
+
+#reorganizable-root .item-node-container > .stabalizer {
+  position:relative;
+  width:100%;
+  height:100%;
+  overflow: hidden;
+  background: white;
+  border-radius: 5px;
+}
+
+#reorganizable-root .item-node-container .item-state {
+  position: absolute;
+  top:0px;
+  left:0px;
+  width:100%;
+  height:100%;
+}
+
+#reorganizable-root .item-node-container .item-state.expanded {
+  opacity: 1.0;
+}
+
+#reorganizable-root .item-node-container .item-state.mini.disabled {
+  opacity: 0.0;
+  pointer-events: none;
+}
+
+#reorganizable-root .item-node-container .drag-btn {
+  position:absolute;
+  top:calc(50% - 20px);
+  right:10px;
+  height:40px;
+  width:40px;
+  background-image:url(Hamburger.svg);
+  background-size: 60%;
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 1.0;
+}
+
+#reorganizable-root .item-node-container .drag-btn:hover {
+  opacity: 0.8;
+  cursor: pointer;
+}
