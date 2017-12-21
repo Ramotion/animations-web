@@ -1,0 +1,95 @@
+
+:root,
+body {
+  height: 100%;
+}
+
+body {
+  background: #3612a1;
+  margin: 0;
+}
+
+#root {
+  display: flex;
+  height: 100%;
+}
+
+.content {
+  position: relative;
+  margin: auto;
+}
+
+.playButton {
+  position: relative;
+  display: block;
+  background-color: #ff7274;
+  border: none;
+  text-align: center;
+  color: #ffffff;
+  box-shadow: 0 15px 30px rgba(54, 18, 161, 0.7), 0 7px 35px 5px rgba(255, 114, 116, 0.85);
+  z-index: 1;
+  transform: scale(1);
+}
+
+.playButton:hover, .playButton:active, .playButton:focus {
+  border: none;
+  outline: none;
+}
+
+.playButton:not(.active):active {
+  transition: all .15s;
+  transform: scale(.9);
+}
+
+.play-icon {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 26px;
+  height: 26px;
+  margin-top: -12px;
+  margin-left: -11px;
+  font-size: 26px;
+  z-index: 1;
+}
+
+.explosion-effect {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 1px;
+  height: 1px;
+  z-index: -1;
+  margin: -6px -1.5px 0 0;
+}
+
+
+.explosion-effect span {
+  position: absolute;
+  width: 3px;
+  height: 12px;
+  border-radius: 3px;
+  opacity: 0.5;
+  background: #ffffff;
+}
+
+.wave-effect {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  max-width: 60%;
+  max-height: 25px;
+  transform: translate(-50%, -50%);
+  overflow: hidden;
+}
+
+.wave-effect span {
+  display: inline-block;
+  margin: 0 3px;
+  vertical-align: middle;
+  width: 4px;
+  border-radius: 4px;
+  background: #ffffff;
+}
+
+
