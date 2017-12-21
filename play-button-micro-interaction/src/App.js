@@ -48,7 +48,6 @@ export default class App extends Component {
 
     }
 
-
     createWaveEffectItems() {
         let numberOfElements = 11;
         for(let i = 0; i < numberOfElements; i++) {
@@ -62,6 +61,11 @@ export default class App extends Component {
     }
 
     tweenWave() {
+        this.timelineMaxWave.to(this.waveEffect, .3,
+            {opacity: 1, ease: Linear.easeNone});
+    }
+
+    tweenWaveItems() {
         this.waveItems.forEach((item) => {
             this.tweenWaveEffectItem(item);
         });
@@ -69,61 +73,67 @@ export default class App extends Component {
 
     tweenWaveEffectItem(item) {
         if (!!item.firstTween) {
-            item.setTween.time(0);
-            item.firstTween.forEach((id) => {
-                id.kill();
-            });
+            item.firstTween.pause();
+            delete item.firstTween;
+            return;
         }
         item.setTween = TweenMax.set(item.$self,
             { height: 10 });
-        item.firstTween = TweenMax.staggerFromTo(item.$self, .2, { height: 10 }, {
+        item.firstTween = TweenMax.to(item.$self, .2, {
             height: 24,
             ease: Linear.easeNone,
-            repeat: 100,
+            repeat: -1,
             delay:item.time,
             yoyo: true
         }, 0.2);
     }
 
-	toggle () {
-        if (this.tweenStatus) {
-           this.tweenStatus = false;
-            $('.playButton').toggleClass('active');
-            this.tweenExplosion();
-            this.tweenWave();
-            this.timelineMax.reversed() || this.timelineMax.paused()
-                ? this.timelineMax.play() : this.timelineMax.reverse();
-            this.timelineMaxPlayIcon.reversed() || this.timelineMaxPlayIcon.paused()
-                ? this.timelineMaxPlayIcon.play() : this.timelineMaxPlayIcon.reverse();
-            setTimeout(() => {
-                this.tweenStatus = true;
-            }, .3)
-        }
-	}
-
-	tweenPlayIcon() {
+    tweenPlayIcon() {
         this.timelineMaxPlayIcon.set(this.playButtonInner,
             {opacity: 1, transform: 'rotateX(1deg)', ease: Linear.easeNone});
-        this.timelineMaxPlayIcon.to(this.playButtonInner, .2,
+        this.timelineMaxPlayIcon.to(this.playButtonInner, .3,
             {opacity: 0,
                 transform: 'rotateY(90deg)',
                 transformOrigin: '50% 50%', ease: Linear.easeNone});
     }
 
+	toggle() {
+        if (this.tweenStatus) {
+           this.tweenStatus = false;
+            $('.playButton').toggleClass('active');
+            this.tweenExplosion();
+
+            this.timelineMax.reversed() || this.timelineMax.paused()
+                ? this.timelineMax.play() : this.timelineMax.reverse();
+            this.timelineMaxPlayIcon.reversed() || this.timelineMaxPlayIcon.paused()
+                ? this.timelineMaxPlayIcon.play() : this.timelineMaxPlayIcon.reverse();
+            this.timelineMaxWave.reversed() || this.timelineMaxWave.paused()
+                ? this.timelineMaxWave.play() : this.timelineMaxWave.reverse();
+            setTimeout(() => {
+                this.tweenWaveItems();
+                this.tweenStatus = true;
+            }, .3)
+        }
+	}
+
+	tweenButton() {
+        this.timelineMax.to(this.playButton, .3,
+            {width: 230, height: 60, ease: Back.easeOut.config(2.1)});
+    }
+
     componentDidMount() {
         this.timelineMax = new TimelineMax({paused:true});
         this.timelineMaxPlayIcon = new TimelineMax({paused:true});
+        this.timelineMaxWave = new TimelineMax({paused:true});
+        this.tweenButton();
         this.createExplosionEffectItems();
         this.createWaveEffectItems();
         this.tweenPlayIcon();
-        this.timelineMax.to(this.playButton, .3,
-            {width: 230, height: 60,
-                paddingLeft: 0, ease:  Back.easeOut.config(2.1)});
+        this.tweenWave();
     }
 
 	render() {
-		return (
-		    <div className={'content'}>
+		return (<div className={'content'}>
                 <div
                     ref={self => this.explosionEffect = self}
                     className={'explosion-effect'}></div>

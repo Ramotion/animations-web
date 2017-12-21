@@ -81,6 +81,7 @@ body {
   max-height: 25px;
   transform: translate(-50%, -50%);
   overflow: hidden;
+  opacity: 0;
 }
 
 .wave-effect span {
