@@ -1,6 +1,5 @@
 import React, {Component} from 'react'
 import {TimelineMax, TweenMax, Back, Linear} from 'gsap';
-import $ from 'jquery';
 
 import './App.css'
 export default class App extends Component {
@@ -18,12 +17,12 @@ export default class App extends Component {
         let numberOfElements = 8;
         let slice = 360 * (1 / (numberOfElements));
         for(let i = 0; i < numberOfElements; i++) {
-            let $self = $('<span />'),
+            let $self = document.createElement('span'),
                 rotate = slice * i + start;
             this.explosionItems.push({
                 $self, rotate
             });
-            $self.appendTo('.explosion-effect');
+            this.explosionEffect.appendChild($self);
         }
     }
 
@@ -51,12 +50,12 @@ export default class App extends Component {
     createWaveEffectItems() {
         let numberOfElements = 11;
         for(let i = 0; i < numberOfElements; i++) {
-            let $self = $('<span />');
+            let $self = document.createElement('span');
             this.waveItems.push({
                 $self,
                 time: (Math.round(Math.random() * 300) / 1000)
             });
-            $self.appendTo('.wave-effect');
+            this.waveEffect.appendChild($self);
         }
     }
 
@@ -100,7 +99,7 @@ export default class App extends Component {
 	toggle() {
         if (this.tweenStatus) {
            this.tweenStatus = false;
-            $('.playButton').toggleClass('active');
+            this.playButton.classList.toggle('active');
             this.tweenExplosion();
 
             this.timelineMax.reversed() || this.timelineMax.paused()

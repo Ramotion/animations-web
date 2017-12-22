@@ -19,6 +19,25 @@ body {
   margin: auto;
 }
 
+.explosion-effect {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 1px;
+  height: 1px;
+  z-index: -1;
+  margin: -6px -1.5px 0 0;
+}
+
+.explosion-effect span {
+  position: absolute;
+  width: 3px;
+  height: 12px;
+  border-radius: 3px;
+  opacity: 0.5;
+  background: #ffffff;
+}
+
 .playButton {
   position: relative;
   display: block;
@@ -51,26 +70,6 @@ body {
   margin-left: -11px;
   font-size: 26px;
   z-index: 1;
-}
-
-.explosion-effect {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  width: 1px;
-  height: 1px;
-  z-index: -1;
-  margin: -6px -1.5px 0 0;
-}
-
-
-.explosion-effect span {
-  position: absolute;
-  width: 3px;
-  height: 12px;
-  border-radius: 3px;
-  opacity: 0.5;
-  background: #ffffff;
 }
 
 .wave-effect {
